@@ -7,9 +7,9 @@ import anim3 from '../../../assets/animation/anim3.json'
 
 const Banner = () => {
     return (
-        <div className="max-w-7xl mx-auto px-12">
+        <div className="max-w-7xl mx-auto ">
             <Carousel autoPlay={true} direction='horizontal' infiniteLoop={true} interval={3000} showArrows={true} >
-                <div className="flex items-center content-center">
+                <div className="flex items-center content-center px-12">
                     <div className="w-1/2 text-left">
                     <h2 className="text-6xl font-bold mb-4">
                         We Make Sure Your <span className="text-[#B8DB4F]">Parcel Arrives</span> On Time - No Fuss.
@@ -26,7 +26,7 @@ const Banner = () => {
 
 
 
-                <div className="flex items-center content-center">
+                <div className="flex items-center content-center px-12">
                     <div className="w-1/2 text-left">
                     <h2 className="text-6xl font-bold mb-4">
                         <span className="text-[#B8DB4F]">Fastest</span>  Delivery & Easy <span className="text-[#B8DB4F]">Pickup</span>  
@@ -45,7 +45,7 @@ const Banner = () => {
 
 
 
-                <div className="flex items-center content-center">
+                <div className="flex items-center content-center px-12">
                     <div className="w-1/2 text-left">
                     <h2 className="text-6xl font-bold mb-4">
                         Delivery in <span className="text-[#B8DB4F]">30 Minutes</span>  — Right at Your <span className="text-[#B8DB4F]">Doorstep</span>  
