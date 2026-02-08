@@ -5,6 +5,7 @@ import OurServices from '../OurServices/OurServices';
 import LogoMarquee from '../LogoMarquee/LogoMarquee';
 import WhyUs from '../WhyUs/WhyUs';
 import Merchant from '../Merchant/Merchant';
+import Review from '../Review/Review';
 
 const Home = () => {
     return (
@@ -14,6 +15,7 @@ const Home = () => {
             <LogoMarquee/>
             <WhyUs/>
             <Merchant/>
+            <Review/>
         </div>
     );
 };
