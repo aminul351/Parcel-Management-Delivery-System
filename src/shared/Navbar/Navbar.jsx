@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router';
+import { Link, NavLink } from 'react-router';
 import Logo from '../Logo/Logo'
 
 const Navbar = () => {
@@ -8,11 +8,12 @@ const Navbar = () => {
         <li><NavLink to={'/'}>Home</NavLink></li>
         <li><NavLink to={'/about'}>About Us</NavLink></li>
         <li><NavLink to={'/coverage'}>Coverage</NavLink></li>
+        <li><NavLink to={'/sendParcel'}>Send Parcel</NavLink></li>
         
     </>
 
     return (
-        <div className="navbar bg-base-100 shadow-sm">
+        <div className="navbar bg-base-100 px-8 shadow-sm">
   <div className="navbar-start">
     <div className="dropdown">
       <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -33,7 +34,7 @@ const Navbar = () => {
     </ul>
   </div>
   <div className="navbar-end">
-    <a className="btn">Button</a>
+    <Link to={'/login'}><button className='btn'>Login</button></Link>
   </div>
 </div>
     );
