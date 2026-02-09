@@ -2,6 +2,7 @@ import { useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
+import Swal from "sweetalert2";
 
 const MyParcel = () => {
   const { user } = useAuth();
@@ -9,7 +10,8 @@ const MyParcel = () => {
   const queryClient = useQueryClient();
   const [selectedParcel, setSelectedParcel] = useState(null);
 
-  const { isLoading, isError, data, error } = useQuery({
+  
+  const { isLoading, isError, data, error, refetch } = useQuery({
     queryKey: ['myParcel', user?.email],
     queryFn: async () => {
       const res = await axiosSecure.get(
@@ -22,11 +24,23 @@ const MyParcel = () => {
   if (isLoading) return <p>Loading parcels...</p>;
   if (isError) return <p>Error: {error.message}</p>;
 
-//   const handleDelete = async (id) => {
-//     if (!window.confirm("Are you sure you want to delete this parcel?")) return;
-//     await axiosSecure.delete(`/parcels/${id}`);
-//     queryClient.invalidateQueries(['myParcel', user?.email]);
-//   };
+  const handleDelete = async (id) => {
+    const result = await Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#d33",
+      cancelButtonColor: "#3085d6",
+      confirmButtonText: "Yes, delete it!",
+    });
+
+    if (result.isConfirmed) {
+      await axiosSecure.delete(`parcels/${id}`);
+      refetch()
+      Swal.fire("Deleted!", "Parcel has been deleted.", "success");
+    }
+  };
 
 //   const handleView = (parcel) => {
 //     setSelectedParcel(parcel);
