@@ -1,10 +1,17 @@
 import { useForm } from 'react-hook-form';
-import { NavLink } from 'react-router';
+import { NavLink, useLocation, useNavigate } from 'react-router';
 import GoogleLogIn from './SocialLogIn/GoogleLogIn';
+import useAuth from '../../hooks/useAuth';
+import toast, { Toaster } from 'react-hot-toast';
 
 
 
 const Login = () => {
+const {signIn} = useAuth()
+
+ const location = useLocation()
+    const navigate = useNavigate()
+    const from = location.state?.from || '/'
 
     const {
         register,
@@ -14,11 +21,23 @@ const Login = () => {
     } = useForm()
 
     const onSubmit = data => {
+        signIn(data.email, data.password)
+        .then(res => {
+            console.log(res.user)
+            navigate(from)
+            toast.success("login successfully 🚀");
+        })
+        .catch(err => console.log(err))
         console.log(data)
+
     }
+
+
+   
 
     return (
         <div >
+            <Toaster/>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <h3 className='text-4xl'>Log In!</h3>
                 <fieldset className="fieldset">

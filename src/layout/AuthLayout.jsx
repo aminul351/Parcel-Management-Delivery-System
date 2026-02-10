@@ -1,11 +1,11 @@
-import { Outlet } from 'react-router';
+import { Link, Outlet } from 'react-router';
 import authImg from '../assets/authImage.png'
 import Logo from '../shared/Logo/Logo';
 
 const AuthLayout = () => {
     return (
         <div className="bg-base-200 p-12">
-            <Logo />
+            <Link to={'/'}><Logo /></Link>
             <div className="hero-content  gap-8 flex-col lg:flex-row-reverse">
                 <div className="flex-1">
                     <img

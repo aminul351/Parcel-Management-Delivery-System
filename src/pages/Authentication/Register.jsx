@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import useAuth from '../../hooks/useAuth';
 import { NavLink } from 'react-router';
 import GoogleLogIn from './SocialLogIn/GoogleLogIn';
+import toast, { Toaster } from 'react-hot-toast';
 
 const Register = () => {
 
@@ -22,6 +23,7 @@ const Register = () => {
             .then((userCredential) => {
                 const user = userCredential.user;
                 console.log(user)
+                toast.success("user created successfully 🚀");
             })
             .catch((error) => {
                 console.log(error)
@@ -34,6 +36,7 @@ const Register = () => {
 
     return (
         <div>
+            <Toaster/>
             <form onSubmit={handleSubmit(onSubmit)}>
 
                 <h3 className='text-4xl'>Create an account</h3>
